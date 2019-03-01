@@ -201,3 +201,5 @@ if __name__ == '__main__':
     download_lsun('./data')
   if 'mnist' in args.datasets:
     download_mnist('./data')
+  if 'sportslogos' in args.datasets:
+    download_sportslogos('./data')
