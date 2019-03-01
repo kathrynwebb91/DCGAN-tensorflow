@@ -141,6 +141,27 @@ def download_lsun(dirpath):
     _download_lsun(data_dir, category, 'val', tag)
   _download_lsun(data_dir, '', 'test', tag)
 
+def download_sportslogos(dirpath):
+  data_dir = 'sportslogos'
+  if os.path.exists(os.path.join(dirpath, data_dir)):
+    print('Found Sportslogos - skip')
+    return
+
+  filename, drive_id  = "sports-logos.zip", "1zwNfeXJ04HG9ujjeOtj0qXmy87zAIPyF"
+  save_path = os.path.join(dirpath, filename)
+
+  if os.path.exists(save_path):
+    print('[*] {} already exists'.format(save_path))
+  else:
+    download_file_from_google_drive(drive_id, save_path)
+
+  zip_dir = ''
+  with zipfile.ZipFile(save_path) as zf:
+    zip_dir = zf.namelist()[0]
+    zf.extractall(dirpath)
+  os.remove(save_path)
+  os.rename(os.path.join(dirpath, zip_dir), os.path.join(dirpath, data_dir))
+
 def download_mnist(dirpath):
   data_dir = os.path.join(dirpath, 'mnist')
   if os.path.exists(data_dir):
