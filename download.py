@@ -157,7 +157,7 @@ def download_sportslogos(dirpath):
   else:
     download_file_from_google_drive(drive_id, save_path)
     
-  pp.pprint(save_path)
+  print(save_path)
   # unzip(save_path)
   zip_dir = ''
   with zipfile.ZipFile(save_path, "r") as zf:
@@ -195,11 +195,12 @@ def prepare_data_dir(path = './data'):
     os.mkdir(path)
 
 def fixBadZipfile(zipFile):
+  print("fixing")
   f = open(zipFile, 'r+b')
   data = f.read()
   pos = data.find('\x50\x4b\x05\x06') # End of central directory signature
   if pos > 0:
-    pp.pprint("Trancating file at location " + str(pos + 22)+ ".")
+    print("Trancating file at location " + str(pos + 22)+ ".")
     f.seek(pos + 22)   # size of 'ZIP end of central directory record'
     f.truncate()
     f.close()
