@@ -149,13 +149,15 @@ def download_sportslogos(dirpath):
     print('Found Sportslogos - skip')
     return
 
-  filename, drive_id  = "sports-logos.zip", "1zwNfeXJ04HG9ujjeOtj0qXmy87zAIPyF"
-  save_path = os.path.join(dirpath, filename)
+  # filename, drive_id  = "sports-logos.zip", "1zwNfeXJ04HG9ujjeOtj0qXmy87zAIPyF"
+  # save_path = os.path.join(dirpath, filename)
 
-  if os.path.exists(save_path):
-    print('[*] {} already exists'.format(save_path))
-  else:
-    download_file_from_google_drive(drive_id, save_path)
+  # if os.path.exists(save_path):
+  #   print('[*] {} already exists'.format(save_path))
+  # else:
+  #   download_file_from_google_drive(drive_id, save_path)
+
+  save_path = "./data/sports-logos.zip"
     
   print(save_path)
   # unzip(save_path)
