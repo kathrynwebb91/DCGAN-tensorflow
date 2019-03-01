@@ -157,7 +157,7 @@ def download_sportslogos(dirpath):
   # else:
   #   download_file_from_google_drive(drive_id, save_path)
 
-  save_path = "./data/sports-logos.zip"
+  save_path = "./data/sports-logos-2.zip"
     
   print(save_path)
   # unzip(save_path)
