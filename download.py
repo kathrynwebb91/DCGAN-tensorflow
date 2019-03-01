@@ -156,10 +156,10 @@ def download_sportslogos(dirpath):
     print('[*] {} already exists'.format(save_path))
   else:
     download_file_from_google_drive(drive_id, save_path)
-
+    fixBadZipfile(save_path)
+  # unzip(save_path)
   zip_dir = ''
   with zipfile.ZipFile(save_path) as zf:
-    fixBadZipfile(zf)
     zip_dir = zf.namelist()[0]
     zf.extractall(dirpath)
   os.remove(save_path)
