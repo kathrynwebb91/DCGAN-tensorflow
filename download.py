@@ -59,9 +59,11 @@ def download_file_from_google_drive(id, destination):
   token = get_confirm_token(response)
 
   if token:
+    print("Got token!")
     params = { 'id' : id, 'confirm' : token }
     response = session.get(URL, params=params, stream=True)
 
+  print("saving response")
   save_response_content(response, destination)
 
 def get_confirm_token(response):
