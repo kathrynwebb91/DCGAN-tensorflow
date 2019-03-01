@@ -165,7 +165,7 @@ def download_sportslogos(dirpath):
   with zipfile.ZipFile(save_path, "r") as zf:
     # fixBadZipfile(zf)
     zip_dir = zf.namelist()[0]
-    zf.extractall(dirpath)
+    zf.extractall(os.path.join(dirpath, 'sports-logos'))
   os.remove(save_path)
   os.rename(os.path.join(dirpath, zip_dir), os.path.join(dirpath, data_dir))
 
@@ -218,4 +218,4 @@ if __name__ == '__main__':
   if 'mnist' in args.datasets:
     download_mnist('./data')
   if 'sportslogos' in args.datasets:
-    download_sportslogos('./data/sports-logos')
+    download_sportslogos('./data')
