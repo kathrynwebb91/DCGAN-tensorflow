@@ -163,7 +163,7 @@ def download_sportslogos(dirpath):
   # unzip(save_path)
   zip_dir = ''
   with zipfile.ZipFile(save_path, "r") as zf:
-    fixBadZipfile(zf)
+    # fixBadZipfile(zf)
     zip_dir = zf.namelist()[0]
     zf.extractall(dirpath)
   os.remove(save_path)
