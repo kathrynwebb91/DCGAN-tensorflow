@@ -165,18 +165,6 @@ def download_sportslogos(dirpath):
   os.remove(save_path)
   os.rename(os.path.join(dirpath, zip_dir), os.path.join(dirpath, data_dir))
 
-def fixBadZipfile(zipFile):  
-  f = open(zipFile, 'r+b')  
-  data = f.read()  
-  pos = data.find('\x50\x4b\x05\x06') # End of central directory signature  
-  if (pos > 0):  
-     self._log("Trancating file at location " + str(pos + 22)+ ".")  
-     f.seek(pos + 22)   # size of 'ZIP end of central directory record' 
-     f.truncate()  
-     f.close()  
-  else:  
-    # raise error, file is truncated
-
 def download_mnist(dirpath):
   data_dir = os.path.join(dirpath, 'mnist')
   if os.path.exists(data_dir):
@@ -203,6 +191,16 @@ def download_mnist(dirpath):
 def prepare_data_dir(path = './data'):
   if not os.path.exists(path):
     os.mkdir(path)
+
+def fixBadZipfile(zipFile):
+  f = open(zipFile, 'r+b')
+  data = f.read()
+  pos = data.find('\x50\x4b\x05\x06') # End of central directory signature
+  if pos > 0:
+    print("Trancating file at location " + str(pos + 22)+ ".")
+    f.seek(pos + 22)   # size of 'ZIP end of central directory record'
+    f.truncate()
+    f.close()
 
 if __name__ == '__main__':
   args = parser.parse_args()
