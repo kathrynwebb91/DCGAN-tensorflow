@@ -63,7 +63,8 @@ def main(_):
           crop=FLAGS.crop,
           checkpoint_dir=FLAGS.checkpoint_dir,
           sample_dir=FLAGS.sample_dir,
-          data_dir=FLAGS.data_dir)
+          data_dir=FLAGS.data_dir,
+          seed_image_dir=FLAGS.seed_image_dir)
     else:
       dcgan = DCGAN(
           sess,
@@ -79,7 +80,8 @@ def main(_):
           crop=FLAGS.crop,
           checkpoint_dir=FLAGS.checkpoint_dir,
           sample_dir=FLAGS.sample_dir,
-          data_dir=FLAGS.data_dir)
+          data_dir=FLAGS.data_dir,
+          seed_image_dir=FLAGS.seed_image_dir)
 
     show_all_variables()
 
