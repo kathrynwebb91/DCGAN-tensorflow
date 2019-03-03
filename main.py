@@ -21,6 +21,7 @@ flags.DEFINE_string("dataset", "celebA", "The name of dataset [celebA, mnist, ls
 flags.DEFINE_string("input_fname_pattern", "*.png", "Glob pattern of filename of input images [*]")
 flags.DEFINE_string("checkpoint_dir", "checkpoint", "Directory name to save the checkpoints [checkpoint]")
 flags.DEFINE_string("data_dir", "./data", "Root directory of dataset [data]")
+flags.DEFINE_string("seed_image_dir", "./seed-images", "Directory for seed images to use to generate results")
 flags.DEFINE_string("sample_dir", "samples", "Directory name to save the image samples [samples]")
 flags.DEFINE_boolean("train", False, "True for training, False for testing [False]")
 flags.DEFINE_boolean("crop", False, "True for training, False for testing [False]")
@@ -96,7 +97,7 @@ def main(_):
     #                 [dcgan.h4_w, dcgan.h4_b, None])
 
     # Below is codes for visualization
-    OPTION = 1
+    OPTION = 5
     visualize(sess, dcgan, FLAGS, OPTION)
 
 if __name__ == '__main__':

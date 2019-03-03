@@ -241,7 +241,24 @@ def visualize(sess, dcgan, config, option):
     new_image_set = [merge(np.array([images[idx] for images in image_set]), [10, 10]) \
         for idx in range(64) + range(63, -1, -1)]
     make_gif(new_image_set, './samples/test_gif_merged.gif', duration=8)
+  elif option == 5:
+    seed_image_dir = config.seed_image_dir
+    sample_files = glob(os.path.join(config.seed_image_dir self.input_fname_pattern))
+    sample = [
+      get_image(sample_file,
+        input_height=config.input_height,
+        input_width=config.input_width,
+        resize_height=config.output_height,
+        resize_width=config.output_width,
+        crop=config.crop,
+        grayscale=config.grayscale) for sample_file in sample_files]
+    if (config.grayscale):
+      sample_inputs = np.array(sample).astype(np.float32)[:, :, :, None]
+    else:
+      sample_inputs = np.array(sample).astype(np.float32)
 
+    samples = sess.run(dcgan.sampler, feed_dict={dcgan.z: sample_inputs})
+    save_images(samples, [image_frame_dim, image_frame_dim], './samples/result_%s.png' % strftime("%Y-%m-%d-%H-%M-%S", gmtime()))
 
 def image_manifold_size(num_images):
   manifold_h = int(np.floor(np.sqrt(num_images)))
