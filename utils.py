@@ -243,7 +243,7 @@ def visualize(sess, dcgan, config, option):
     make_gif(new_image_set, './samples/test_gif_merged.gif', duration=8)
   elif option == 5:
     seed_image_dir = config.seed_image_dir
-    sample_files = glob(os.path.join(config.seed_image_dir config.input_fname_pattern))
+    sample_files = glob(os.path.join(config.seed_image_dir, config.input_fname_pattern))
     sample = [
       get_image(sample_file,
         input_height=config.input_height,
