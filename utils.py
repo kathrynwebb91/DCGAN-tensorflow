@@ -246,6 +246,7 @@ def visualize(sess, dcgan, config, option):
   elif option == 5:
     seed_image_dir = config.seed_image_dir
     sample_files = glob(os.path.join(config.seed_image_dir, config.input_fname_pattern))
+    print(sample_files)
     sample = [
       get_image(sample_file,
         input_height=config.input_height,
@@ -254,8 +255,9 @@ def visualize(sess, dcgan, config, option):
         resize_width=config.output_width,
         crop=config.crop,
         grayscale=False) for sample_file in sample_files]
+      print(sample)
     # if (config.grayscale):
-    sample_inputs = np.array(sample).astype(np.float32)[:, :, :, None]
+    #sample_inputs = np.array(sample).astype(np.float32)[:, :, :, None]
     # # else:
     # sample_inputs = np.array(sample).astype(np.float32)
 
