@@ -255,9 +255,9 @@ def visualize(sess, dcgan, config, option):
         crop=config.crop,
         grayscale=False) for sample_file in sample_files]
     # if (config.grayscale):
-    #   sample_inputs = np.array(sample).astype(np.float32)[:, :, :, None]
-    # else:
-    sample_inputs = np.array(sample).astype(np.float32)
+    sample_inputs = np.array(sample).astype(np.float32)[:, :, :, None]
+    # # else:
+    # sample_inputs = np.array(sample).astype(np.float32)
 
     samples = sess.run(dcgan.sampler, feed_dict={dcgan.z: sample_inputs})
     save_images(samples, [image_frame_dim, image_frame_dim], './samples/result_%s.png' % strftime("%Y-%m-%d-%H-%M-%S", gmtime()))
