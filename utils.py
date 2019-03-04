@@ -254,14 +254,14 @@ def visualize(sess, dcgan, config, option):
         resize_height=config.output_height,
         resize_width=config.output_width,
         crop=config.crop,
-        grayscale=False) for sample_file in sample_files]
+        grayscale=True) for sample_file in sample_files]
     print(sample)
     # if (config.grayscale):
     #sample_inputs = np.array(sample).astype(np.float32)[:, :, :, None]
     # # else:
     sample_inputs = np.array(sample).astype(np.float32)
 
-    samples = sess.run(dcgan.sampler, feed_dict={dcgan.z: sample_inputs})
+    samples = sess.run(dcgan.sampler, feed_dict={dcgan.z: sample_inputs[0]})
     save_images(samples, [image_frame_dim, image_frame_dim], './samples/result_%s.png' % strftime("%Y-%m-%d-%H-%M-%S", gmtime()))
 
 def image_manifold_size(num_images):
