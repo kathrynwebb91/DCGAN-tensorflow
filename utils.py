@@ -253,7 +253,7 @@ def visualize(sess, dcgan, config, option):
         resize_height=config.output_height,
         resize_width=config.output_width,
         crop=config.crop,
-        grayscale=config.grayscale) for sample_file in sample_files]
+        grayscale=False) for sample_file in sample_files]
     if (config.grayscale):
       sample_inputs = np.array(sample).astype(np.float32)[:, :, :, None]
     else:
